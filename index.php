@@ -1,0 +1,12 @@
+<?php
+require("./boot/errorhelper.php");
+require("./boot/boothelper.php");
+if(BootHelper::load_script())exit;
+if(BootHelper::load_style())exit;
+BootHelper::configure();
+BootHelper::class_loader();
+BootHelper::include_helpers();
+include_once("./boot/session.php");
+if(BootHelper::load_ajax())exit;
+include_once("./template.html");
+?>

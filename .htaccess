@@ -1,0 +1,17 @@
+Options +FollowSymLinks
+Options +Indexes
+RewriteEngine on
+
+ErrorDocument 404 /404.php
+
+RewriteRule ^profile/user/([^/]*)$ /profile?user=$1 [L]
+
+RewriteRule ^(/$|$) index.php?component=frontend&module=homepage&action=index&item=default [L]
+
+RewriteRule ^([0-9A-Za-z_-]+)(/$|$) index.php?component=frontend&module=$1&action=index [QSA,L]
+
+RewriteRule ^users/([0-9A-Za-z_-]+)(/$|$) index.php?event=empty&module=users&action=$1 [QSA]
+
+RewriteRule ^([0-9A-Za-z_-]+)/([0-9A-Za-z_.-]+)(/$|$) index.php?component=frontend&module=$1&action=$2 [QSA,L]
+
+RewriteRule ^([0-9A-Za-z_-]+)/([0-9A-Za-z_.-]+)/([0-9A-Za-z_.-]+)(/$|$) index.php?component=frontend&module=$1&action=$2&item=$3 [QSA,L]
